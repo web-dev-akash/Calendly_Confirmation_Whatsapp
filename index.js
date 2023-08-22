@@ -19,11 +19,16 @@ app.post("/", (req, res) => {
     let msg = req.body;
     msg = msg.split("\n");
     const [foundPhone] = msg.filter((val) => val.includes("Phone No"));
-    console.log(foundPhone);
     let phone = foundPhone.substring(11, foundPhone.length);
-    phone = phone.replace(/\s/g, "");
+    const [foundEmail] = msg.filter((val) => val.includes("Invitee Email"));
+    let email = foundEmail.substring(15, foundEmail.length);
+    email = email.trim();
+    const newPhone = phone.replace(/\s/g, "");
+    console.log(foundPhone);
+    console.log(foundEmail);
     return res.status(200).send({
-      phone,
+      phone: newPhone,
+      email: email,
     });
   } catch (error) {
     return res.status(500).send({ error });

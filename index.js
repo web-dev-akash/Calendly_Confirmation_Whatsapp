@@ -8,6 +8,12 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.status(200).send({
+    message: "Server Started Successfully",
+  });
+});
+
 app.post("/", (req, res) => {
   try {
     let msg = req.body;

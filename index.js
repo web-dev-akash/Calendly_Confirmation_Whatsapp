@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.status(200).send({
-    message: "Server Started Successfully",
+    message: "Server Started Calendly",
   });
 });
 

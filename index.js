@@ -17,7 +17,9 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
   try {
     let phone = req.body;
+    phone = phone.substring(1, phone.length);
     const newPhone = phone.replace(/\s/g, "");
+    // console.log(newPhone);
     return res.status(200).send({
       phone: newPhone,
     });

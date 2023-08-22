@@ -12,7 +12,9 @@ app.post("/", (req, res) => {
   try {
     let msg = req.body;
     msg = msg.split("\n");
-    let phone = msg[12].substring(11, msg[12].length);
+    const [foundPhone] = msg.filter((val) => val.includes("Phone No"));
+    console.log(foundPhone);
+    let phone = foundPhone.substring(11, foundPhone.length);
     phone = phone.replace(/\s/g, "");
     return res.status(200).send({
       phone,

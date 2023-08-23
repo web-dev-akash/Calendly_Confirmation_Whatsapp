@@ -10,16 +10,16 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.status(200).send({
-    message: "Server Started Calendly",
+    message: "Server Started New Calendly",
   });
 });
 
 app.post("/", (req, res) => {
   try {
     let phone = req.body;
+    phone = phone.trim();
     phone = phone.substring(1, phone.length);
     const newPhone = phone.replace(/\s/g, "");
-    // console.log(newPhone);
     return res.status(200).send({
       phone: newPhone,
     });
